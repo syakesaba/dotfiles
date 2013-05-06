@@ -119,9 +119,8 @@ endif
     \setlocal omnifunc=ccomplete#Complete
 
 "Fussy
-":let mapleader = ","
-":let g:mapleader = ","
-":set complete+=k
+:let mapleader = ","
+:let g:mapleader = ","
 
 " ---------------------------------------------------------------------------
 " Appearance/Encoding
@@ -317,6 +316,7 @@ endif
 :set backspace=indent,eol,start
 "Dont stop cursor when encountered EOF!
 :set whichwrap=b,s,h,l,<,>,[,]
+
 
 " ---------------------------------------------------------------------------
 " Cursor behavior
