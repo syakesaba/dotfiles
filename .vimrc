@@ -11,6 +11,7 @@
 :augroup END
 "files have no extension sould be recognized as '[txt]'
 :autocmd BufEnter * if &filetype == ""  | setlocal ft=txt | endif
+:scriptencoding utf-8
 
 " ---------------------------------------------------------------------------
 " Exsamples
