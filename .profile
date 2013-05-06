@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # encoding: utf-8
+
+if [-e ".bashrc" ]; then . .profile;fi;
+
 #export HOME="/cygdrive/c/Users/user/Desktop"
 export PYTHONSTARTUP="$HOME/.pythonrc"
 #export PATH=$PATH:/cygdrive/c/Program\ Files/EttercapNG
