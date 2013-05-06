@@ -1,0 +1,6 @@
+BoldAsFont=yes
+Term=xterm-256color
+Locale=C
+Charset=UTF-8
+Columns=143
+Rows=59
