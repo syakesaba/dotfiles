@@ -1,16 +1,20 @@
 " 20130506 SYA-KE .vimrc
-
 " ---------------------------------------------------------------------------
 " Essentials
 " ---------------------------------------------------------------------------
 "This vimrc is ... yes, vim only.
 :set nocompatible
 "autogroups below should be... enabled as it's from vimrc.
-:augroup vimrc
-    :autocmd!
-:augroup END
+:if has("autocmd")
+    :augroup vimrc
+        :autocmd!
+    :augroup END
+:endif
 "files have no extension sould be recognized as '[txt]'
-:autocmd BufEnter * if &filetype == ""  | setlocal ft=txt | endif
+:if has("autocmd")
+    :autocmd BufEnter *
+        \ if &filetype == ""  | setlocal ft=txt | endif
+:endif
 :scriptencoding utf-8
 
 " ---------------------------------------------------------------------------
@@ -18,8 +22,8 @@
 " ---------------------------------------------------------------------------
 "Functions should use 'function!' .
 "then they will be overridable functions.
-:function Hoge()
- :echo 'hoge'
+:function! Hoge()
+    :echo 'hoge'
 :endfunction
 "Variables should be declared as Local or Global
 """"e.g. Global setting
@@ -39,7 +43,7 @@
 ":highlight CursorIM
 :highlight CursorLine term=underline cterm=underline gui=underline ctermbg=none ctermfg=none guibg=none guifg=none
 ":highlight CursorColumn term=underline cterm=underline gui=underline ctermbg=none ctermfg=white guibg=none guifg=white
-:highlight ColorColumn term=none cterm=none gui=none ctermbg=white ctermfg=darkred guibg=white guifg=darkred
+:highlight ColorColumn term=italic cterm=none gui=none ctermbg=yellow ctermfg=darkred guibg=yellow guifg=darkred
 ":highlight Directory
 ":highlight DiffAdd
 ":highlight DiffChange
@@ -51,10 +55,10 @@
 ":highlight FoldColumn
 ":highlight SignColumn
 :highlight IncSearch term=bold cterm=bold gui=bold ctermbg=white ctermfg=none guibg=white guifg=none
-:highlight LineNr term=bold cterm=bold gui=bold ctermbg=gray ctermfg=black guibg=gray guifg=black
+:highlight LineNr term=bold cterm=bold gui=bold ctermbg=black ctermfg=yellow guibg=black guifg=yellow
 ":highlight CursorLineNr
 ":highlight MatchParen
-":highlight ModeMsg
+:highlight ModeMsg term=bold cterm=bold gui=bold ctermbg=none ctermfg=red guibg=none guifg=red
 ":highlight MoreMsg
 ":highlight NonText
 ":highlight Normal term=bold cterm=bold gui=bold
@@ -69,17 +73,14 @@
 ":highlight SpellCap
 ":highlight SpellLocal
 ":highlight SpellRare
-":highlight StatusLine
-":highlight StatusLineNC
 ":highlight TabLine
 ":highlight TabLineFill
 ":highlight TabLineSel
 ":highlight Title
-":highlight Visual
+:highlight Visual term=bold cterm=bold gui=bold ctermbg=darkgray ctermfg=none guibg=darkgray guifg=none
 ":highlight VisualNOS
 ":highlight WarningMsg
 ":highlight WildMenu
-:highlight User1 cterm=bold term=bold gui=bold guifg=black guibg=white ctermfg=black ctermbg=white
 
 " ---------------------------------------------------------------------------
 " Indent/TAB/Programming
@@ -111,7 +112,7 @@ if has('smartindent')
 " ---------------------------------------------------------------------------
 "universal syntax highlighting
 if has("syntax")
- :syntax on
+    :syntax on
 endif
 "in C, use Ccomplete
 :autocmd FileType c
@@ -147,18 +148,6 @@ endif
 :if has('cmdline_info')
     :setlocal showcmd
 :endif
-"statusline (showmode...) shold be always on.
-:set laststatus=2
-"Status line Coloring!
-if has('statusline')
-    :setlocal statusline +=%1*%{&ff}%*            "file format
-    :setlocal statusline +=%1*%y%*                "file type
-    :setlocal statusline +=%1*\ %<%F%*            "file name
-    :setlocal statusline +=%1*%=%m%*                "modified flag
-    :setlocal statusline +=%1*%1l%*             "current line
-    :setlocal statusline +=%1*/%L%*               "total lines
-    :setlocal statusline +=%1*%1v\ %*             "virtual column number
-:endif
 "show cursorline. it draws horizontal line. (a bit slower drawing..)
 :if has("syntax")
     :setlocal cursorline
@@ -186,12 +175,46 @@ if has('statusline')
 :if has('scrollbind')
     :setlocal scrollbind
 :endif
-"JapaneseIME CursorHilighting
-:if has('multi_byte_ime') || has('xim')
-    :highlight CursorIM guibg=Orange guifg=NONE
-:endif
 "more command for large output
 :set more
+
+" ---------------------------------------------------------------------------
+" StatusLine
+" ---------------------------------------------------------------------------
+"statusline and ruler(showmode...) shold be always on.
+:set laststatus=2
+:if has('statusline')
+    "for coloring, '%1*%_____%*'
+    :highlight StatusLine cterm=none term=none gui=none guifg=black guibg=yellow ctermfg=black ctermbg=yellow
+    :highlight StatusLineNC cterm=none term=none gui=none guifg=black guibg=yellow ctermfg=black ctermbg=yellow
+    :setlocal statusline +=[Plat.:
+    :setlocal statusline +=%1*%{&ff}%* "file format
+    :highlight User1 cterm=bold term=bold gui=bold guifg=black guibg=yellow ctermfg=black ctermbg=yellow
+    :setlocal statusline +=]
+    :setlocal statusline +=[Type:
+    :setlocal statusline +=%2*%Y%* "file type
+    :highlight User2 cterm=bold term=bold gui=bold guifg=red guibg=yellow ctermfg=red ctermbg=yellow
+    :setlocal statusline +=]
+    :setlocal statusline +=[Name:\ 
+    :setlocal statusline +=%3*%F%* "file name
+    :highlight User3 cterm=bold term=bold gui=bold guifg=blue guibg=yellow ctermfg=blue ctermbg=yellow
+    :setlocal statusline +=]
+    :setlocal statusline +=[
+    :setlocal statusline +=%4*%<%{(&fenc!=''?&fenc:&enc)}%* "file encoding
+    :highlight User4 cterm=bold term=bold gui=bold guifg=green guibg=yellow ctermfg=green ctermbg=yellow
+    :setlocal statusline +=]
+    :setlocal statusline +=%5*%=%m%* "modified flag
+    :highlight User5 cterm=bold term=bold gui=bold guifg=darkred guibg=yellow ctermfg=darkred ctermbg=yellow
+    :setlocal statusline +=\ Line[
+    :setlocal statusline +=%6*%1l%* "current line
+    :highlight User6 cterm=bold term=bold gui=bold guifg=blue guibg=yellow ctermfg=blue ctermbg=yellow
+    :setlocal statusline +=/
+    :setlocal statusline +=%7*%L%* "total lines
+    :highlight User7 cterm=bold term=bold gui=bold guifg=black guibg=yellow ctermfg=black ctermbg=yellow
+    :setlocal statusline +=].
+    :setlocal statusline +=%8*%=%1v%* "virtual column number
+    :highlight User8 cterm=bold term=bold gui=bold guifg=blue guibg=yellow ctermfg=blue ctermbg=yellow
+:endif
 
 " ---------------------------------------------------------------------------
 " Multi Editing
@@ -311,3 +334,22 @@ if has('statusline')
 :set errorbells
 " Use visual bell instead of beeping. it's flashing!
 :set visualbell
+
+" ---------------------------------------------------------------------------
+" Japanese setting
+" ---------------------------------------------------------------------------
+":if has('multi_byte') && has('termresponse')
+"    :setlocal ambiwidth=double
+":endif
+"notify ZENKAKU Space
+:if has('syntax') || has('autocmd')
+    :augroup ZenkakuSpace
+        :autocmd ColorScheme       * call ZenkakuSpace()
+        :autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+    :augroup END
+    :highlight ZenkakuSpace cterm=underline ctermbg=darkred gui=underline guibg=darkred
+:endif
+"JapaneseIME CursorHilighting
+:if has('multi_byte_ime') || has('xim')
+    :highlight CursorIM guibg=Orange guifg=NONE
+:endif
