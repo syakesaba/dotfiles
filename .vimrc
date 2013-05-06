@@ -1,4 +1,4 @@
-" SYA-KE
+" 20130506 SYA-KE .vimrc
 
 " ---------------------------------------------------------------------------
 " Essentials
@@ -136,7 +136,7 @@ endif
 :set encoding=utf-8
 "alternative encodings
 :if has('multi_byte')
-    :setlocal fileencodings=iso-2022-jp,cp932,euc-jp,utf-8,utf-16,ucs-2-internal,ucs-2
+    :setlocal fileencodings=utf-8,cp932,euc-jp,iso-2022-jp,utf-16,ucs-2-internal,ucs-2
 :endif
 "show mode (insert?append?replace?). it will show mode into bottom left.
 :set showmode
