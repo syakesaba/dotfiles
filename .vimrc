@@ -604,5 +604,5 @@ endif
     :source ~/.vimrc.local
 :endif
 ":if filereadable(expand('~/.vimrc.python'))
-"    :source ~/.vimrc.local
+"    :source ~/.vimrc.python
 ":endif
