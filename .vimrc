@@ -596,3 +596,13 @@ endif
 :if has('multi_byte_ime') || has('xim')
     :highlight CursorIM guibg=Orange guifg=NONE
 :endif
+
+" ---------------------------------------------------------------------------
+" Other vimrc!
+" ---------------------------------------------------------------------------
+:if filereadable(expand('~/.vimrc.local'))
+    :source ~/.vimrc.local
+:endif
+":if filereadable(expand('~/.vimrc.python'))
+"    :source ~/.vimrc.local
+":endif
