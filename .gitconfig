@@ -1,0 +1,7 @@
+[user]
+	email = syakesaba@gmail.com
+	name = syakesaba
+[push]
+	default = matching
+[core]
+	editor = vim
