@@ -54,14 +54,14 @@ unified = 15
 #hgext.children =
 hgext.convert =
 hgext.color =
-hgext.eol =
+#hgext.eol =
 hgext.extdiff =
 #hgext.factotum =
 #hgext.fetch =
 #hgext.gpg =
 hgext.graphlog =
-hgext.hgk =
-hgext.highlight =
+#hgext.hgk =
+#hgext.highlight =
 #hgext.histedit =
 #hgext.inotify =
 #hgext.interhg =
@@ -89,10 +89,27 @@ hgext.zeroconf =
 #qct=/usr/local/lib/hg/qct.py
 #hggit =
 
+[convert]
+# This is default
+cvsps = cvsps -A -u --cvs-direct -q
+
+[color]
+mode = auto
+
+#[eol]
+#native = LF
+#only-consistent = False
+
+#[extdiff]
+#
+
 [format]
 usestore = True
 usefncache = True
 dotencode = True
+
+[pager]
+pager = LESS='FRX' less
 
 #[graph]
 #default.width = 2
