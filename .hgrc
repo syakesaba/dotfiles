@@ -45,23 +45,45 @@ unified = 15
 #charsets = utf-8
 
 [extensions]
-hgext.bookmarks =
-hgext.color =
+#hgext.acl =
+#hgext.alias =
+#hgext.bisect =
+#hgext.blackbox =
+#hgext.bookmarks =
+#hgext.bugzilla =
+#hgext.children =
 hgext.convert =
+hgext.color =
+hgext.eol =
 hgext.extdiff =
-hgext.fetch =
+#hgext.factotum =
+#hgext.fetch =
+#hgext.gpg =
+hgext.graphlog =
 hgext.hgk =
 hgext.highlight =
+#hgext.histedit =
+#hgext.inotify =
+#hgext.interhg =
+hgext.keyword =
+hgext.largefiles =
 hgext.mq =
+#hgext.notify =
 hgext.pager =
 hgext.parentrevspec =
+#hgext.patchbomb =
 hgext.progress =
 hgext.purge =
 hgext.rebase =
 hgext.record =
-#hgext.shelve =
+hgext.relink =
+hgext.schemes =
+hgext.share =
 hgext.transplant =
+#hgext.win32mbcs =
+#hgext.win32text =
 hgext.zeroconf =
+#hgext.shelve =
 #prompt = ~/.hglib/hg-prompt/prompt.py
 #histedit = ~/.hglib/histedit/hg_histedit.py
 #qct=/usr/local/lib/hg/qct.py
@@ -94,8 +116,6 @@ dotencode = True
 #pushkey.?? =
 #tag.?? =
 #update.?? =
-#フック名 = python:モジュール名.サブモジュール名.関数名
-#フック名 = python:/モジュール/ファイル/への/パス.py:関数
 
 [hostfingerprints]
 bitbucket.org = 97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40
@@ -191,6 +211,7 @@ timeout = -1
 traceback = True
 username = SYA-KE<syakesaba@gmail.com>
 verbose = False
+
 [web]
 #accesslog =
 #address = 127.0.0.1
