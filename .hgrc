@@ -1,0 +1,238 @@
+[alias]
+show = log --stat --color=always -vpr
+last = log -l1 -p
+df = diff
+qstatus = status --rev -2:-1
+blame = blame --number --user --date -q
+glog = log --graph
+today = !hg log --template '{rev} {desc|firstline|strip}\n' -r "sort(user('$(hg showconfig ui.username | sed 's/.*<\(.*\)>/\1/')') and date(-1), -date)"
+
+#[annotate]
+#ignorews = False
+#ignorewsamount = False
+#ignoreblanklines = False
+
+#[auth]
+#dummy.prefix = hg.syakesaba.dip.jp
+#dummy.username = syakesaba
+#dummy.password = foobar
+#dummy.schemes = http https
+#dummy.key = /a.pem
+#dummy.cert = /a.cert
+
+#[encode]
+#*.gz = pipe: gunzip
+#*.gz = gzip
+
+#[defaults]
+#
+
+[diff]
+git = True
+nodates = False
+showfunc = False
+#ignorews = False
+#ignorewsamount = False
+#ignoreblanklines = False
+unified = 15
+
+[email]
+#from =
+#to =
+#cc =
+#bcc =
+#method =
+#charsets = utf-8
+
+[extensions]
+hgext.bookmarks =
+hgext.color =
+hgext.convert =
+hgext.extdiff =
+hgext.fetch =
+hgext.hgk =
+hgext.highlight =
+hgext.mq =
+hgext.pager =
+hgext.parentrevspec =
+hgext.progress =
+hgext.purge =
+hgext.rebase =
+hgext.record =
+#hgext.shelve =
+hgext.transplant =
+hgext.zeroconf =
+#prompt = ~/.hglib/hg-prompt/prompt.py
+#histedit = ~/.hglib/histedit/hg_histedit.py
+#qct=/usr/local/lib/hg/qct.py
+#hggit =
+
+[format]
+usestore = True
+usefncache = True
+dotencode = True
+
+#[graph]
+#default.width = 2
+#default.color = FF0000
+
+#[hooks]
+#changegroup.?? =
+#commit.?? =
+#incoming.?? =
+#outgoing.?? =
+#post-?? =
+#pre-?? =
+#prechangegroup.?? =
+#precommit.?? =
+#prepushkey.?? =
+#pretag.?? =
+#pretxnchangegroup.?? =
+#pretxncommit.?? =
+#preupdate.?? =
+#listkeys.?? =
+#pushkey.?? =
+#tag.?? =
+#update.?? =
+#フック名 = python:モジュール名.サブモジュール名.関数名
+#フック名 = python:/モジュール/ファイル/への/パス.py:関数
+
+[hostfingerprints]
+bitbucket.org = 97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40
+
+#[http_proxy]
+#host =
+#no = hg.local hg.lab.local
+#passwd =
+#user =
+#always =
+
+#[merge-patterns]
+#**.c = vimdiff
+#**.jpg = p4merge
+
+#[merge-tools]
+#priority =
+#executable =
+#args =
+#premerge =
+#binary =
+#symlink =
+#check =
+#fixeol =
+#gui =
+#regkey =
+#regkeyalt =
+#regname =
+#regappend =
+
+[patch]
+eol = strict
+
+#[paths]
+#default =
+#default-push =
+
+[phases]
+#publish =
+#new-commit =
+#checksubrepos =
+
+#[profiling]
+#type = stat
+#format =text
+#frequency =
+#output =
+#sort =
+#limit =
+#nested =
+
+#[revsetalias]
+
+[server]
+uncompressed = False
+#preferuncompressed = False
+validate = False
+
+#[smtp]
+#host =
+#port =
+#tls =
+#verifycert =
+#username =
+#password =
+#local_hostname =
+
+#[subpaths]
+
+#[trusted]
+#users = a,b,c
+#groups = a,b,c
+
+[ui]
+archivemeta = True
+askusername = False
+debug = False
+editor = vim
+fallbackencoding = ms932
+#ignore =
+interactive = True
+#logtemplate =
+merge = vimdiff
+portablefilenames = warn
+quiet = False
+remotecmd = hg
+reportoldssl = True
+slash = False
+ssh = ssh -C
+strict = False
+style = changelog
+timeout = -1
+traceback = True
+username = SYA-KE<syakesaba@gmail.com>
+verbose = False
+[web]
+#accesslog =
+#address = 127.0.0.1
+allow_archive = bz2,gz,zip
+allowbz2 = True
+allowgz = True
+#allow_push = True
+allow_read = *
+allow_zip = True
+archivesubrepos = True
+#baseurl =
+#cacerts =
+cache = True
+collapse = True
+comprisoncontext = full
+contact = syakesaba@gmail.com
+deny_push = *
+deby_read =
+descend = True
+description = MercurialWebInterface
+encoding =
+errorlog =
+guessmime = True #be aware XSS
+hidden = False
+ipv6 = True
+#logoimg =
+maxchanges = 20
+maxfiles = 20
+maxshortchanges = 100
+#name =
+port = 8000
+#prefix =
+push_ssl = True
+#staticurl =
+stripes = 1
+style = gitweb
+#templates =
+
+#[websub]
+#issues = s|issue(\d+)|<a href="http://bts.example.org/issue\1">issue\1</a>|i
+#italic = s/\b_(\S+)_\b/<i>\1<\/i>/
+#bold = s/\*\b(\S+)\b\*/<b>\1<\/b>/
+
+#[worker]
+#numcpus =
