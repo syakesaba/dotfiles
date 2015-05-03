@@ -251,15 +251,24 @@ endif
 :set nowritebackup
 "so, I will not take a backup of my viming.
 :set nobackup
-"no backup! It's annoying!
+"Backup vim history
 :if has('viminfo')
-    :setlocal viminfo=
+    :setlocal viminfo='10,\"100,:20,%,n~/.viminfo
 :endif
 "no swap! dont make too many files pleeeeaaaz
 :set noswapfile
 "remenber cursor position when re-opening file.
-":au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
-"  \ exe "normal g`\"" | endif
+function! ResCur()
+  if line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+
+augroup resCur
+  autocmd!
+  autocmd BufWinEnter * call ResCur()
+augroup END
 
 " ---------------------------------------------------------------------------
 " File I/O
