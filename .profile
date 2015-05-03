@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
 # encoding: utf-8
 
-if [-e ".bashrc" ]; then . .profile;fi;
+if [-e ".bashrc" ]; then
+    #Dup load?
+    exit;
+fi;
 
 #export HOME="/cygdrive/c/Users/user/Desktop"
 export PYTHONSTARTUP="$HOME/.pythonrc"
 #export PATH=$PATH:/cygdrive/c/Program\ Files/EttercapNG
 export PS1="\[\e[1;32m\]\#\[\e[00m\]\[\e[0;31m\][\[\e[00m\]\[\e[0;39m\]\t\[\e[00m\] \[\e[1;34m\]\u\[\e[00m\]\[\e[0;31m\] \[\e[0;37m\]\w\[\e[00m\]\[\e[0;31m\]]\[\e[00m\]\[\e[1;37m\]\$ \[\e[00m\]"
-export LANG=ja_JP.UTF-8
-export LANGUAGE=ja_JP.UTF-8
+#export LANG=ja_JP.UTF-8
+#export LANGUAGE=ja_JP.UTF-8
 alias l=ls
 alias ks=ls
 alias sl=ls
@@ -21,8 +24,12 @@ alias fgrep="fgrep --color"
 alias egrep="egrep --color"
 #alias apt-get=apt-cyg
 alias vi=vim
+alias vim="vim -O"
+alias vimo="vim -o"
 alias netcat="ncat"
 alias nc="ncat"
 alias exifdel="exiftool -all= "
 alias script='TIMER=$(date "+%Y%m%d_%H%M%S");script -t 2> ${TIMER}.time ${TIMER}.console;'
 alias javac="javac -encoding UTF-8 "
+alias ssh="ssh -C "
+alias sftp="sftp -C "
