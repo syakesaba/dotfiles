@@ -312,7 +312,8 @@ augroup END
 "enable replacing invisible chars. see listchars.
 :set list
 "converts EOL to '¬',TEB to '>   ',spaces before EOL to '█'
-:set listchars=eol:¬,tab:>\ ,trail:█
+":set listchars=eol:¬,tab:>\ ,trail:█
+:set listchars=tab:>\ 
 "Dont show ~C,~M but <0C> <0D>
 :set display=uhex,lastline
 "show EOL
@@ -333,6 +334,12 @@ augroup END
 "change cursor color and blinking in insert mode.
 :highlight iCursor cterm=none term=none gui=none guifg=white guibg=none
 :set guicursor=i-ci:iCursor-blinkwait100-blinkon150-blinkoff100
+
+" ---------------------------------------------------------------------------
+" Mouse behavior
+" ---------------------------------------------------------------------------
+"Enable Mouse Text Selection
+:set mouse=a
 
 " ---------------------------------------------------------------------------
 " Alerts behavior
