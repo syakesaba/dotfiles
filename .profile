@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 # encoding: utf-8
 
-if [ -e ".bashrc" ]; then
-    #Dup load?
-    exit;
-fi;
-
 color_off='\e[0m'       # Text Reset
 color_txtblk='\e[0;30m' # Black - Regular
 color_txtred='\e[0;31m' # Red
