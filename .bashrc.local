@@ -1,6 +1,44 @@
 #!/bin/bash
 # encoding: utf-8
 
+# SYA-KE's bashrc
+# inspire: http://www.unixuser.org/~euske/doc/bashtips/bashrc.html
+
+#chmod 644
+umask 022
+
+#no core
+ulimit -c 0
+
+# less command
+export PAGER=less
+export LESS='-X -i -P ?f%f:(stdin).  ?lb%lb?L/%L..  [?eEOF:?pb%pb\%..]'
+export JLESSCHARSET=japanese-ujis
+
+# .
+shopt -u sourcepath
+
+# .bash_history
+shopt -s histverify
+shopt -s histappend
+shopt -s histreedit
+HISTFILESIZE=1000000
+HISTSIZE=1000000
+HISTCONTROL=ignoreboth
+HISTIGNORE=bg:fg
+HISTTIMEFORMAT='%y/%m/%d %H:%M:%S '
+shopt -s cmdhist
+PROMPT_COMMAND='history -a'
+
+#unfix winsize
+shopt -s checkwinsize
+
+# completention
+shopt -u hostcomplete
+shopt -s checkhash
+shopt -s no_empty_cmd_completion
+
+# COLOR DEFINITION
 color_off='\e[0m'       # Text Reset
 color_txtblk='\e[0;30m' # Black - Regular
 color_txtred='\e[0;31m' # Red
@@ -36,25 +74,51 @@ color_bakcyn='\e[46m'   # Cyan
 color_bakwht='\e[47m'   # White
 color_txtrst='\e[0m'    # Text Reset
 
-export PYTHONSTARTUP="$HOME/.pythonrc.py"
-export PS1="\[$color_bldblu\]\#\[$color_off\]\[$color_txtred\][\[$color_off\]\[$color_bldgrn\]\t\[$color_off\] \[$color_bldblu\]\u\[$color_off\]\[$color_txtred\]@\[$color_off\]\[$color_bldgrn\]\w\[$color_off\]\[$color_txtred\]]\[$color_off\]\[$color_txtcyn\]\$ \[$color_off\]"
+# terminal PS1: http://bashrcgenerator.com/
+export PS1="[\[$(tput sgr0)\]\[\033[38;5;9m\]\t\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;51m\]\u\[$(tput sgr0)\]\[\033[38;5;15m\]@\[$(tput sgr0)\]\[\033[38;5;36m\]\H\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\[\033[38;5;10m\]\w\[$(tput sgr0)\]\[\033[38;5;15m\]]>\[$(tput sgr0)\]"
+
+# terminal LANGUAGE
 #export LANG=ja_JP.UTF-8
 #export LANGUAGE=ja_JP.UTF-8
+#export LC_ALL=ja_JP.UTF-8
+
+# quick alias
 alias l=ls
 alias ks=ls
 alias sl=ls
-alias ls="ls --color -F"
 alias cd..="cd .."
 alias xs=cd
 alias vf=cd
+
+# grep color
 alias grep="grep --color"
 alias fgrep="fgrep --color"
 alias egrep="egrep --color"
-alias vi=vim
+
+# ls color
+export LSCOLORS="exfxcxdxbxegedabagacad"
+export CLICOLOR_FORCE=1
+ls --color=auto &> /dev/null && alias ls='ls --color=auto' || alias ls="ls -G -F "
+
+# vim
 alias vim="vim -O"
 alias vimo="vim -o"
+
+# exif
 alias exifdel="exiftool -all= "
+
+# scriptreplay
 alias script='TIMER=$(date "+%Y%m%d_%H%M%S");script -t 2> ${TIMER}.time ${TIMER}.console;'
+
+# java
 alias javac="javac -encoding UTF-8 "
+
+#ssh compress
 alias ssh="ssh -C "
 alias sftp="sftp -C "
+
+# python rcfiles
+export PYTHONSTARTUP="$HOME/.pythonrc.py"
+
+
+
