@@ -54,7 +54,7 @@
 ":highlight Folded
 ":highlight FoldColumn
 ":highlight SignColumn
-:highlight IncSearch term=bold cterm=bold gui=bold ctermbg=white ctermfg=none guibg=white guifg=none
+:highlight IncSearch term=bold cterm=bold gui=bold ctermbg=gray ctermfg=none guibg=gray guifg=none
 :highlight LineNr term=bold cterm=bold gui=bold ctermbg=black ctermfg=yellow guibg=black guifg=yellow
 ":highlight CursorLineNr
 ":highlight MatchParen
@@ -67,7 +67,7 @@
 ":highlight PmenuSbar
 ":highlight PmenuThumb
 ":highlight Question
-:highlight Search term=bold cterm=bold gui=bold ctermbg=white ctermfg=none guibg=white guifg=none
+:highlight Search term=bold cterm=bold gui=bold ctermbg=gray ctermfg=none guibg=gray guifg=none
 ":highlight SpecialKey
 ":highlight SpellBad
 ":highlight SpellCap
