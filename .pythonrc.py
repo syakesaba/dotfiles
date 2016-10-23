@@ -1,7 +1,14 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-import os,sys,atexit
+import os
+import sys
+import atexit
+
+PYTHON_VERSION = sys.version_info[0]
+
+def rcprintfunc(s):
+    os.stdout.write(s+os.linesep)
 
 #===============Completention
 try:
@@ -16,7 +23,7 @@ try:
 except ImportError as e:
     pass
 except Exception as e:
-    print "Unknown error at ",__file__,e
+    rcprintfunc("Unknown error at " + __file__,e)
 
 #===============History
 try:
@@ -35,7 +42,7 @@ try:
     readline.set_history_length(100)
     atexit.register(readline.write_history_file, pyhistfile)
 except Exception as e:
-    print "Unknown error at ",__file__,e
+    rcprintfunc("Unknown error at " + __file__,e)
 
 #===============Miscellaneous
 sys.ps1 = '>> '
