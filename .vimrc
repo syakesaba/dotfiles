@@ -339,7 +339,17 @@ augroup END
 " Mouse behavior
 " ---------------------------------------------------------------------------
 "Enable Mouse Text Selection
-:set mouse=a
+"http://yskwkzhr.blogspot.jp/2013/02/use-mouse-on-terminal-vim.html
+:if has('mouse')
+  :set mouse=a
+  :if has('mouse_sgr')
+    :set ttymouse=sgr
+  :elseif v:version > 703 || v:version is 703 && has('patch632') " I couldn't use has('mouse_sgr') :-(
+    :set ttymouse=sgr
+  :else
+    :set ttymouse=xterm2
+  :endif
+:endif
 
 " ---------------------------------------------------------------------------
 " Alerts behavior
