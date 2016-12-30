@@ -67,7 +67,7 @@
 ":highlight PmenuSbar
 ":highlight PmenuThumb
 ":highlight Question
-:highlight Search term=bold cterm=bold gui=bold ctermbg=gray ctermfg=none guibg=gray guifg=none
+:highlight Search term=bold cterm=bold gui=bold ctermbg=darkgray ctermfg=none guibg=darkgray guifg=none
 ":highlight SpecialKey
 ":highlight SpellBad
 ":highlight SpellCap
