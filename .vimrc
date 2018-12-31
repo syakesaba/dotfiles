@@ -379,3 +379,17 @@ augroup END
 :if has('multi_byte_ime') || has('xim')
     :highlight CursorIM guibg=Orange guifg=NONE
 :endif
+" ---------------------------------------------------------------------------
+" Binary Editor!
+" ---------------------------------------------------------------------------
+" vim -b : edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin,*.bank let &bin=1
+  au BufReadPost *.bin,*.bank if &bin | %!xxd
+  au BufReadPost *.bin,*.bank set ft=xxd | endif
+  au BufWritePre *.bin,*.bank if &bin | %!xxd -r
+  au BufWritePre *.bin,*.bank endif
+  au BufWritePost *.bin,*.bank if &bin | %!xxd
+  au BufWritePost *.bin,*.bank set nomod | endif
+augroup END
